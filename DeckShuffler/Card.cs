@@ -2,6 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Drawing;
+    using System.IO;
+    using System.Resources;
     using static DeckShuffler.Information;
 
     public class Card : IEquatable<Card>
@@ -15,6 +18,8 @@
         public Suits Suit { get; }
 
         public Values Value { get; }
+
+        public Image Image => Image.FromFile(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + $"\\Resources\\{Enum.GetName(this.Value).ToLower()}_{Enum.GetName(this.Suit).ToLower()}.png");
 
         public static bool operator ==(Card card1, Card card2) => EqualityComparer<Card>.Default.Equals(card1, card2);
 

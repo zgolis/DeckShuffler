@@ -9,16 +9,20 @@
 
     public class Deck : IEquatable<Deck>
     {
-        private static Random Random = new Random();
-        protected List<Card> Cards = new List<Card>();
+        private static Random random = new Random();
 
-        public Deck()
+        public List<Card> Cards { get; private set; } = new List<Card>();
+
+        public Deck(bool generateDeck = true)
         {
-            foreach (Suits suit in Enum.GetValues(typeof(Suits)))
+            if (generateDeck)
             {
-                for (int count = 1; count < 14; count++)
+                foreach (Suits suit in Enum.GetValues(typeof(Suits)))
                 {
-                    this.Cards.Add(new Card(suit, (Values)count));
+                    for (int count = 1; count < 14; count++)
+                    {
+                        this.Cards.Add(new Card(suit, (Values)count));
+                    }
                 }
             }
         }
@@ -45,7 +49,7 @@
 
             while (this.Cards.Count > 0)
             {
-                newLocation = Random.Next(0, this.Cards.Count);
+                newLocation = random.Next(0, this.Cards.Count);
                 newList.Add(this.Cards[newLocation]);
 
                 // Biased as it removes the old card.
@@ -64,7 +68,7 @@
 
             for (int count = 0; count < length; count++)
             {
-                int random = count + (int)(Random.NextDouble() * (length - count));
+                int random = count + (int)(Deck.random.NextDouble() * (length - count));
 
                 // Makes a copy of the card.
                 Card tempCard = array[random];
