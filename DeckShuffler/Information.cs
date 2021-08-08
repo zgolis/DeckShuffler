@@ -2,6 +2,9 @@
 {
     public class Information
     {
+        /// <summary>
+        /// Card suits.
+        /// </summary>
         public enum Suits
         {
             Hearts,
@@ -10,6 +13,9 @@
             Spades,
         }
 
+        /// <summary>
+        /// Card Names and values.
+        /// </summary>
         public enum Values
         {
             Ace = 1,

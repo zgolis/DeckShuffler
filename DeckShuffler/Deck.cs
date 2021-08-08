@@ -7,8 +7,15 @@
 
     public class Deck : IEquatable<Deck>
     {
+        /// <summary>
+        /// Generic Random class.
+        /// </summary>
         private static Random random = new Random();
 
+        /// <summary>
+        /// Creates a new Deck class.
+        /// </summary>
+        /// <param name="generateDeck">Bool value to generate a deck of cards.</param>
         public Deck(bool generateDeck = true)
         {
             if (generateDeck)
@@ -23,6 +30,10 @@
             }
         }
 
+        /// <summary>
+        /// Creates a new Deck class.
+        /// </summary>
+        /// <param name="cards">The cards to copy into the deck.</param>
         public Deck(List<Card> cards)
         {
             List<Card> newList = new List<Card>();
@@ -34,12 +45,18 @@
             this.Cards = newList;
         }
 
+        /// <summary>
+        /// List of cards in the deck.
+        /// </summary>
         public List<Card> Cards { get; private set; } = new List<Card>();
 
         public static bool operator ==(Deck deck1, Deck deck2) => EqualityComparer<Deck>.Default.Equals(deck1, deck2);
 
         public static bool operator !=(Deck deck1, Deck deck2) => !(deck1 == deck2);
 
+        /// <summary>
+        /// Shuffle where each item is removed at the end.
+        /// </summary>
         public void LessEfficientShuffle()
         {
             List<Card> newList = new List<Card>();
@@ -57,12 +74,14 @@
             this.Cards = newList;
         }
 
+        /// <summary>
+        /// Shuffle where each item is not deleted but moved.
+        /// (Fisher–Yates shuffle)
+        /// </summary>
         public void UnbiasedShuffle()
         {
             Card[] array = this.Cards.ToArray();
             int length = array.Length;
-
-            System.Diagnostics.Debug.WriteLine(length);
 
             for (int count = 0; count < length; count++)
             {
@@ -81,6 +100,10 @@
             this.Cards = array.ToList();
         }
 
+        /// <summary>
+        /// Debug prints the order of the deck.
+        /// </summary>
+        [Obsolete("### For Debug Purposes ###")]
         public void PrintOrder()
         {
             System.Diagnostics.Debug.WriteLine("\n");
@@ -90,6 +113,10 @@
             }
         }
 
+        /// <summary>
+        /// Debug prints the total suits and total of each type of card.
+        /// </summary>
+        [Obsolete("### For Debug Purposes ###")]
         public void PrintTotal()
         {
             int SuitCount(Suits suit)
@@ -123,13 +150,23 @@
             System.Diagnostics.Debug.WriteLine($"Kings: {ValueCount(Values.King)}");
         }
 
+        /// <summary>
+        /// Copies the current deck.
+        /// </summary>
+        /// <returns></returns>
         public Deck Copy()
         {
             return new Deck(this.Cards.Select(card => card.Copy()).ToList());
         }
 
+        /// <inheritdoc />
         public override bool Equals(object obj) => this.Equals((Deck)obj);
 
+        /// <summary>
+        /// Determines whether the specified deck is equal to the current deck.
+        /// </summary>
+        /// <param name="deck"></param>
+        /// <returns></returns>
         public bool Equals(Deck deck)
         {
             int count = 0;
@@ -141,6 +178,7 @@
             });
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             int hashCode = 1938039292;

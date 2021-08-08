@@ -9,8 +9,14 @@
 
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Determines whether a board has been flipped.
+        /// </summary>
         private bool cardsFlipped = false;
 
+        /// <summary>
+        /// Creates a new MainForm class.
+        /// </summary>
         public MainForm()
         {
             this.InitializeComponent();
@@ -27,20 +33,38 @@
             this.AllCardBackBackgrounds();
         }
 
-        public Deck DrawPile { get; private set; }
-
-        public Deck DiscardPile { get; private set; }
-
+        /// <summary>
+        /// The root deck.
+        /// </summary>
         public Deck DeckRoot { get; private set; }
 
+        /// <summary>
+        /// The draw pile.
+        /// </summary>
+        public Deck DrawPile { get; private set; }
+
+        /// <summary>
+        /// The discard pile.
+        /// </summary>
+        public Deck DiscardPile { get; private set; }
+
+        /// <summary>
+        /// The copied deck.
+        /// </summary>
         public Deck DeckCopy { get; private set; }
 
+        /// <summary>
+        /// General card back image.
+        /// </summary>
         private Image Background => Image.FromFile(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + $"\\Resources\\back.png");
 
-        private void ButtonRealShuffle_Click(object sender, EventArgs e)
+        // * Button Clicks * //
+        private void ButtonAltShuffle_Click(object sender, EventArgs e)
         {
-            this.ResetDeck(() => this.DeckRoot.LessEfficientShuffle());
             this.AllCardBackBackgrounds();
+            this.DeckRoot.LessEfficientShuffle();
+            this.DrawPile = this.DeckRoot.Copy();
+            this.DiscardPile = new Deck(generateDeck: false);
         }
 
         private void ButtonClearDeck_Click(object sender, EventArgs e)
@@ -50,19 +74,15 @@
 
         private void ButtonCopyDeck_Click(object sender, EventArgs e)
         {
-            this.DeckCopy = this.DeckRoot.Copy();
-
-            for (int count = 0; count < 52; count++)
-            {
-                Card card = this.DeckCopy.Cards[count];
-                this.SetCopiedCardImage(count, card.Image);
-            }
+            this.CopyDeck();
         }
 
         private void ButtonShuffle_Click(object sender, EventArgs e)
         {
             this.AllCardBackBackgrounds();
-            this.ResetDeck(() => this.DeckRoot.UnbiasedShuffle());
+            this.DeckRoot.UnbiasedShuffle();
+            this.DrawPile = this.DeckRoot.Copy();
+            this.DiscardPile = new Deck(generateDeck: false);
         }
 
         private void ButtonDrawCard_Click(object sender, EventArgs e)
@@ -73,6 +93,11 @@
         private void ButtonDrawFiveCards_Click(object sender, EventArgs e)
         {
             this.DrawCard(5);
+        }
+
+        private void ButtonDrawTenCards_Click(object sender, EventArgs e)
+        {
+            this.DrawCard(10);
         }
 
         private void ButtonFlipAllCards_Click(object sender, EventArgs e)
@@ -98,14 +123,41 @@
 
         private void ButtonCompareDecks_Click(object sender, EventArgs e)
         {
-            this.LabelOutput.Text = string.Empty;
-            this.LabelOutput.Text = this.DeckCopy.Equals(this.DeckRoot) ? "Yes, the decks are the same." : "No, the decks are different";
+            if (this.DeckCopy == null)
+            {
+                this.CopyDeck();
+            }
+            else
+            {
+                this.LabelOutput.Text = string.Empty;
+                this.LabelOutput.Text = this.DeckCopy.Equals(this.DeckRoot) ? "Yes, the decks are the same." : "No, the decks are different";
+            }
         }
 
+        // * End Button Clicks * //
+
+        /// <summary>
+        /// Copies the deck.
+        /// </summary>
+        private void CopyDeck()
+        {
+            this.DeckCopy = this.DeckRoot.Copy();
+
+            for (int count = 0; count < 52; count++)
+            {
+                Card card = this.DeckCopy.Cards[count];
+                this.SetCopiedCardImage(count, card.Image);
+            }
+        }
+
+        /// <summary>
+        /// Resets the deck.
+        /// </summary>
+        /// <param name="action">Action to perform such as shuffles.</param>
         private void ResetDeck(Action action = null)
         {
-            this.ClearAllBackgrounds();
             this.DeckRoot = new Deck();
+            this.ClearAllBackgrounds();
 
             if (action != null)
             {
@@ -116,9 +168,14 @@
             this.DiscardPile = new Deck(generateDeck: false);
         }
 
+        /// <summary>
+        /// Draws a set number of cards.
+        /// </summary>
+        /// <param name="cardsToDraw">The number of cards to draw. Default is 1.</param>
         private void DrawCard(int cardsToDraw = 1)
         {
             this.LabelOutput.Text = string.Empty;
+            int counter = 0;
 
             if (this.cardsFlipped)
             {
@@ -142,41 +199,64 @@
                 }
                 else
                 {
-                    this.LabelOutput.Text += "No more cards to draw!\n";
+                    counter++;
+                    this.LabelOutput.Text = $"No more cards to draw! x{counter}";
                 }
 
                 cardsToDraw--;
             }
         }
 
-        private void AllCardBackBackgrounds()
+        /// <summary>
+        /// Sets all cards in the main deck to card back backgrounds.
+        /// </summary>
+        private void AllCardBackBackgrounds() => this.SetBackgrounds((count) => this.SetCardImage(count, this.Background));
+
+        /// <summary>
+        /// Sets all backgrounds to nothing.
+        /// </summary>
+        private void ClearAllBackgrounds() => this.SetBackgrounds((count) => this.SetCardImage(count));
+
+        /// <summary>
+        /// Helper method to set the backgrounds of card cells.
+        /// </summary>
+        /// <param name="action">The action to perform which takes an counter.</param>
+        private void SetBackgrounds(Action<int> action)
         {
-            for (int count = 0; count < 52; count++)
+            for (int count = 0; count < this.DeckRoot.Cards.Count; count++)
             {
-                this.SetCardImage(count, this.Background);
+                action(count);
             }
         }
 
-        private void ClearAllBackgrounds()
-        {
-            for (int count = 0; count < 52; count++)
-            {
-                this.SetCardImage(count);
-            }
-        }
-
+        /// <summary>
+        /// Helper method to set the card image of a cell.
+        /// </summary>
+        /// <param name="count">The number to identitify the picturebox.</param>
+        /// <param name="image">The image to set the picturebox to.</param>
         private void SetCardImage(int count, Image image = null)
         {
             PictureBox dynamicPictureBox = this.DynamicPictureBox(count);
             dynamicPictureBox.Image = image;
         }
 
+        /// <summary>
+        /// Helper method to set the copied card image, which is reversed.
+        /// </summary>
+        /// <param name="count">The number to identitify the picturebox.</param>
+        /// <param name="image">The image to set the picturebox to.</param>
         private void SetCopiedCardImage(int count, Image image = null)
         {
             PictureBox dynamicPictureBox = this.DynamicPictureBox(51 - count, "Copied");
             dynamicPictureBox.Image = image;
         }
 
+        /// <summary>
+        /// Helper method to return a picturebox.
+        /// </summary>
+        /// <param name="count">The int ending of the picturebox's name.</param>
+        /// <param name="copied">Whether or not the picturebox is for the copied table or main.</param>
+        /// <returns></returns>
         private PictureBox DynamicPictureBox(int count, string copied = null) => (PictureBox)typeof(MainForm).GetField($"{copied}PictureBox{count + 1}", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(this);
     }
 }
