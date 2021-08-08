@@ -138,6 +138,8 @@
             {
                 this.FlipCards((card) => card.Image);
             }
+
+            GC.Collect();
         }
 
         /// <summary>
