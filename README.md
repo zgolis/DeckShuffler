@@ -4,10 +4,10 @@ This is a small application to shuffle a deck of cards in C# using .Net 5.0 and 
 You can copy and compare decks and there are two implementations of shuffles.
 
 ### Prerequisites:
-1. Download and install [VS 2019](https://visualstudio.microsoft.com/) (Tested with Community Edition).
-2. Clone the repository to your local machine.
-3. Load the solution and project "DeckShuffler".
-4. Run 'DeckShuffler' on the top bar.
+1. Download and install [VS 2019](https://visualstudio.microsoft.com/) (Desktop Environment addon to do windows forms, tested with Community Edition).
+3. Clone the repository to your local machine.
+4. Load the solution and project "DeckShuffler".
+5. Run 'DeckShuffler' on the top bar.
 
 # Features
 ### Top Right Buttons:
