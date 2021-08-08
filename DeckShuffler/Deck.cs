@@ -87,13 +87,13 @@
             {
                 int random = count + (int)(Deck.random.NextDouble() * (length - count));
 
-                // Makes a copy of the card.
+                // Makes a copy of the random array's card.
                 Card tempCard = array[random];
 
-                // Replaces the card with the current count card index.
+                // Replaces the random array's card with the count array's card.
                 array[random] = array[count];
 
-                // Replaces the current count card index with the copied card.
+                // Replaces the count array's card with the copied random array's card.
                 array[count] = tempCard;
             }
 

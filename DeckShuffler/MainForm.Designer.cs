@@ -31,8 +31,6 @@ namespace DeckShuffler
         {
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.TableLayoutPanelCopiedCards = new System.Windows.Forms.TableLayoutPanel();
-            this.CopiedPictureBox1 = new System.Windows.Forms.PictureBox();
-            this.CopiedPictureBox2 = new System.Windows.Forms.PictureBox();
             this.CopiedPictureBox3 = new System.Windows.Forms.PictureBox();
             this.CopiedPictureBox4 = new System.Windows.Forms.PictureBox();
             this.CopiedPictureBox5 = new System.Windows.Forms.PictureBox();
@@ -150,10 +148,10 @@ namespace DeckShuffler
             this.ButtonCompareDecks = new System.Windows.Forms.Button();
             this.PictureBox54 = new System.Windows.Forms.PictureBox();
             this.LabelOutput = new System.Windows.Forms.Label();
+            this.CopiedPictureBox1 = new System.Windows.Forms.PictureBox();
+            this.CopiedPictureBox2 = new System.Windows.Forms.PictureBox();
             this.TableLayoutPanel1.SuspendLayout();
             this.TableLayoutPanelCopiedCards.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox5)).BeginInit();
@@ -260,6 +258,8 @@ namespace DeckShuffler
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox54)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // TableLayoutPanel1
@@ -296,8 +296,8 @@ namespace DeckShuffler
             this.TableLayoutPanelCopiedCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.TableLayoutPanelCopiedCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.TableLayoutPanelCopiedCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.TableLayoutPanelCopiedCards.Controls.Add(this.CopiedPictureBox1, 1, 1);
             this.TableLayoutPanelCopiedCards.Controls.Add(this.CopiedPictureBox2, 0, 5);
+            this.TableLayoutPanelCopiedCards.Controls.Add(this.CopiedPictureBox1, 0, 5);
             this.TableLayoutPanelCopiedCards.Controls.Add(this.CopiedPictureBox3, 9, 4);
             this.TableLayoutPanelCopiedCards.Controls.Add(this.CopiedPictureBox4, 8, 4);
             this.TableLayoutPanelCopiedCards.Controls.Add(this.CopiedPictureBox5, 7, 4);
@@ -361,37 +361,19 @@ namespace DeckShuffler
             this.TableLayoutPanelCopiedCards.Size = new System.Drawing.Size(230, 250);
             this.TableLayoutPanelCopiedCards.TabIndex = 6;
             // 
-            // CopiedPictureBox1
-            // 
-            this.CopiedPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox1.Location = new System.Drawing.Point(26, 44);
-            this.CopiedPictureBox1.Name = "CopiedPictureBox1";
-            this.CopiedPictureBox1.Size = new System.Drawing.Size(17, 35);
-            this.CopiedPictureBox1.TabIndex = 51;
-            this.CopiedPictureBox1.TabStop = false;
-            // 
-            // CopiedPictureBox2
-            // 
-            this.CopiedPictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox2.Location = new System.Drawing.Point(26, 208);
-            this.CopiedPictureBox2.Name = "CopiedPictureBox2";
-            this.CopiedPictureBox2.Size = new System.Drawing.Size(17, 39);
-            this.CopiedPictureBox2.TabIndex = 50;
-            this.CopiedPictureBox2.TabStop = false;
-            // 
             // CopiedPictureBox3
             // 
             this.CopiedPictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox3.Location = new System.Drawing.Point(3, 208);
+            this.CopiedPictureBox3.Location = new System.Drawing.Point(210, 167);
             this.CopiedPictureBox3.Name = "CopiedPictureBox3";
-            this.CopiedPictureBox3.Size = new System.Drawing.Size(17, 39);
+            this.CopiedPictureBox3.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox3.TabIndex = 49;
             this.CopiedPictureBox3.TabStop = false;
             // 
             // CopiedPictureBox4
             // 
             this.CopiedPictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox4.Location = new System.Drawing.Point(210, 167);
+            this.CopiedPictureBox4.Location = new System.Drawing.Point(187, 167);
             this.CopiedPictureBox4.Name = "CopiedPictureBox4";
             this.CopiedPictureBox4.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox4.TabIndex = 48;
@@ -400,7 +382,7 @@ namespace DeckShuffler
             // CopiedPictureBox5
             // 
             this.CopiedPictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox5.Location = new System.Drawing.Point(187, 167);
+            this.CopiedPictureBox5.Location = new System.Drawing.Point(164, 167);
             this.CopiedPictureBox5.Name = "CopiedPictureBox5";
             this.CopiedPictureBox5.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox5.TabIndex = 47;
@@ -409,7 +391,7 @@ namespace DeckShuffler
             // CopiedPictureBox6
             // 
             this.CopiedPictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox6.Location = new System.Drawing.Point(164, 167);
+            this.CopiedPictureBox6.Location = new System.Drawing.Point(141, 167);
             this.CopiedPictureBox6.Name = "CopiedPictureBox6";
             this.CopiedPictureBox6.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox6.TabIndex = 46;
@@ -418,7 +400,7 @@ namespace DeckShuffler
             // CopiedPictureBox7
             // 
             this.CopiedPictureBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox7.Location = new System.Drawing.Point(141, 167);
+            this.CopiedPictureBox7.Location = new System.Drawing.Point(118, 167);
             this.CopiedPictureBox7.Name = "CopiedPictureBox7";
             this.CopiedPictureBox7.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox7.TabIndex = 45;
@@ -427,7 +409,7 @@ namespace DeckShuffler
             // CopiedPictureBox8
             // 
             this.CopiedPictureBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox8.Location = new System.Drawing.Point(118, 167);
+            this.CopiedPictureBox8.Location = new System.Drawing.Point(95, 167);
             this.CopiedPictureBox8.Name = "CopiedPictureBox8";
             this.CopiedPictureBox8.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox8.TabIndex = 44;
@@ -436,7 +418,7 @@ namespace DeckShuffler
             // CopiedPictureBox9
             // 
             this.CopiedPictureBox9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox9.Location = new System.Drawing.Point(95, 167);
+            this.CopiedPictureBox9.Location = new System.Drawing.Point(72, 167);
             this.CopiedPictureBox9.Name = "CopiedPictureBox9";
             this.CopiedPictureBox9.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox9.TabIndex = 43;
@@ -445,7 +427,7 @@ namespace DeckShuffler
             // CopiedPictureBox10
             // 
             this.CopiedPictureBox10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox10.Location = new System.Drawing.Point(72, 167);
+            this.CopiedPictureBox10.Location = new System.Drawing.Point(49, 167);
             this.CopiedPictureBox10.Name = "CopiedPictureBox10";
             this.CopiedPictureBox10.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox10.TabIndex = 42;
@@ -454,7 +436,7 @@ namespace DeckShuffler
             // CopiedPictureBox11
             // 
             this.CopiedPictureBox11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox11.Location = new System.Drawing.Point(49, 167);
+            this.CopiedPictureBox11.Location = new System.Drawing.Point(26, 167);
             this.CopiedPictureBox11.Name = "CopiedPictureBox11";
             this.CopiedPictureBox11.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox11.TabIndex = 41;
@@ -463,7 +445,7 @@ namespace DeckShuffler
             // CopiedPictureBox12
             // 
             this.CopiedPictureBox12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox12.Location = new System.Drawing.Point(26, 167);
+            this.CopiedPictureBox12.Location = new System.Drawing.Point(3, 167);
             this.CopiedPictureBox12.Name = "CopiedPictureBox12";
             this.CopiedPictureBox12.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox12.TabIndex = 40;
@@ -472,7 +454,7 @@ namespace DeckShuffler
             // CopiedPictureBox13
             // 
             this.CopiedPictureBox13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox13.Location = new System.Drawing.Point(3, 167);
+            this.CopiedPictureBox13.Location = new System.Drawing.Point(210, 126);
             this.CopiedPictureBox13.Name = "CopiedPictureBox13";
             this.CopiedPictureBox13.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox13.TabIndex = 39;
@@ -481,7 +463,7 @@ namespace DeckShuffler
             // CopiedPictureBox14
             // 
             this.CopiedPictureBox14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox14.Location = new System.Drawing.Point(210, 126);
+            this.CopiedPictureBox14.Location = new System.Drawing.Point(187, 126);
             this.CopiedPictureBox14.Name = "CopiedPictureBox14";
             this.CopiedPictureBox14.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox14.TabIndex = 38;
@@ -490,7 +472,7 @@ namespace DeckShuffler
             // CopiedPictureBox15
             // 
             this.CopiedPictureBox15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox15.Location = new System.Drawing.Point(187, 126);
+            this.CopiedPictureBox15.Location = new System.Drawing.Point(164, 126);
             this.CopiedPictureBox15.Name = "CopiedPictureBox15";
             this.CopiedPictureBox15.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox15.TabIndex = 37;
@@ -499,7 +481,7 @@ namespace DeckShuffler
             // CopiedPictureBox16
             // 
             this.CopiedPictureBox16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox16.Location = new System.Drawing.Point(164, 126);
+            this.CopiedPictureBox16.Location = new System.Drawing.Point(141, 126);
             this.CopiedPictureBox16.Name = "CopiedPictureBox16";
             this.CopiedPictureBox16.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox16.TabIndex = 36;
@@ -508,7 +490,7 @@ namespace DeckShuffler
             // CopiedPictureBox17
             // 
             this.CopiedPictureBox17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox17.Location = new System.Drawing.Point(141, 126);
+            this.CopiedPictureBox17.Location = new System.Drawing.Point(118, 126);
             this.CopiedPictureBox17.Name = "CopiedPictureBox17";
             this.CopiedPictureBox17.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox17.TabIndex = 35;
@@ -517,7 +499,7 @@ namespace DeckShuffler
             // CopiedPictureBox18
             // 
             this.CopiedPictureBox18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox18.Location = new System.Drawing.Point(118, 126);
+            this.CopiedPictureBox18.Location = new System.Drawing.Point(95, 126);
             this.CopiedPictureBox18.Name = "CopiedPictureBox18";
             this.CopiedPictureBox18.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox18.TabIndex = 34;
@@ -526,7 +508,7 @@ namespace DeckShuffler
             // CopiedPictureBox19
             // 
             this.CopiedPictureBox19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox19.Location = new System.Drawing.Point(95, 126);
+            this.CopiedPictureBox19.Location = new System.Drawing.Point(72, 126);
             this.CopiedPictureBox19.Name = "CopiedPictureBox19";
             this.CopiedPictureBox19.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox19.TabIndex = 33;
@@ -535,7 +517,7 @@ namespace DeckShuffler
             // CopiedPictureBox20
             // 
             this.CopiedPictureBox20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox20.Location = new System.Drawing.Point(72, 126);
+            this.CopiedPictureBox20.Location = new System.Drawing.Point(49, 126);
             this.CopiedPictureBox20.Name = "CopiedPictureBox20";
             this.CopiedPictureBox20.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox20.TabIndex = 32;
@@ -544,7 +526,7 @@ namespace DeckShuffler
             // CopiedPictureBox21
             // 
             this.CopiedPictureBox21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox21.Location = new System.Drawing.Point(49, 126);
+            this.CopiedPictureBox21.Location = new System.Drawing.Point(26, 126);
             this.CopiedPictureBox21.Name = "CopiedPictureBox21";
             this.CopiedPictureBox21.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox21.TabIndex = 31;
@@ -553,7 +535,7 @@ namespace DeckShuffler
             // CopiedPictureBox22
             // 
             this.CopiedPictureBox22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox22.Location = new System.Drawing.Point(26, 126);
+            this.CopiedPictureBox22.Location = new System.Drawing.Point(3, 126);
             this.CopiedPictureBox22.Name = "CopiedPictureBox22";
             this.CopiedPictureBox22.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox22.TabIndex = 30;
@@ -562,7 +544,7 @@ namespace DeckShuffler
             // CopiedPictureBox23
             // 
             this.CopiedPictureBox23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox23.Location = new System.Drawing.Point(3, 126);
+            this.CopiedPictureBox23.Location = new System.Drawing.Point(210, 85);
             this.CopiedPictureBox23.Name = "CopiedPictureBox23";
             this.CopiedPictureBox23.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox23.TabIndex = 29;
@@ -571,7 +553,7 @@ namespace DeckShuffler
             // CopiedPictureBox24
             // 
             this.CopiedPictureBox24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox24.Location = new System.Drawing.Point(210, 85);
+            this.CopiedPictureBox24.Location = new System.Drawing.Point(187, 85);
             this.CopiedPictureBox24.Name = "CopiedPictureBox24";
             this.CopiedPictureBox24.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox24.TabIndex = 28;
@@ -580,7 +562,7 @@ namespace DeckShuffler
             // CopiedPictureBox25
             // 
             this.CopiedPictureBox25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox25.Location = new System.Drawing.Point(187, 85);
+            this.CopiedPictureBox25.Location = new System.Drawing.Point(164, 85);
             this.CopiedPictureBox25.Name = "CopiedPictureBox25";
             this.CopiedPictureBox25.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox25.TabIndex = 27;
@@ -589,7 +571,7 @@ namespace DeckShuffler
             // CopiedPictureBox26
             // 
             this.CopiedPictureBox26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox26.Location = new System.Drawing.Point(164, 85);
+            this.CopiedPictureBox26.Location = new System.Drawing.Point(141, 85);
             this.CopiedPictureBox26.Name = "CopiedPictureBox26";
             this.CopiedPictureBox26.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox26.TabIndex = 26;
@@ -598,7 +580,7 @@ namespace DeckShuffler
             // CopiedPictureBox27
             // 
             this.CopiedPictureBox27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox27.Location = new System.Drawing.Point(141, 85);
+            this.CopiedPictureBox27.Location = new System.Drawing.Point(118, 85);
             this.CopiedPictureBox27.Name = "CopiedPictureBox27";
             this.CopiedPictureBox27.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox27.TabIndex = 25;
@@ -607,7 +589,7 @@ namespace DeckShuffler
             // CopiedPictureBox28
             // 
             this.CopiedPictureBox28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox28.Location = new System.Drawing.Point(118, 85);
+            this.CopiedPictureBox28.Location = new System.Drawing.Point(95, 85);
             this.CopiedPictureBox28.Name = "CopiedPictureBox28";
             this.CopiedPictureBox28.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox28.TabIndex = 24;
@@ -616,7 +598,7 @@ namespace DeckShuffler
             // CopiedPictureBox29
             // 
             this.CopiedPictureBox29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox29.Location = new System.Drawing.Point(95, 85);
+            this.CopiedPictureBox29.Location = new System.Drawing.Point(72, 85);
             this.CopiedPictureBox29.Name = "CopiedPictureBox29";
             this.CopiedPictureBox29.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox29.TabIndex = 23;
@@ -625,7 +607,7 @@ namespace DeckShuffler
             // CopiedPictureBox30
             // 
             this.CopiedPictureBox30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox30.Location = new System.Drawing.Point(72, 85);
+            this.CopiedPictureBox30.Location = new System.Drawing.Point(49, 85);
             this.CopiedPictureBox30.Name = "CopiedPictureBox30";
             this.CopiedPictureBox30.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox30.TabIndex = 22;
@@ -634,7 +616,7 @@ namespace DeckShuffler
             // CopiedPictureBox31
             // 
             this.CopiedPictureBox31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox31.Location = new System.Drawing.Point(49, 85);
+            this.CopiedPictureBox31.Location = new System.Drawing.Point(26, 85);
             this.CopiedPictureBox31.Name = "CopiedPictureBox31";
             this.CopiedPictureBox31.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox31.TabIndex = 21;
@@ -643,7 +625,7 @@ namespace DeckShuffler
             // CopiedPictureBox32
             // 
             this.CopiedPictureBox32.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox32.Location = new System.Drawing.Point(26, 85);
+            this.CopiedPictureBox32.Location = new System.Drawing.Point(3, 85);
             this.CopiedPictureBox32.Name = "CopiedPictureBox32";
             this.CopiedPictureBox32.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox32.TabIndex = 20;
@@ -652,7 +634,7 @@ namespace DeckShuffler
             // CopiedPictureBox33
             // 
             this.CopiedPictureBox33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox33.Location = new System.Drawing.Point(3, 85);
+            this.CopiedPictureBox33.Location = new System.Drawing.Point(210, 44);
             this.CopiedPictureBox33.Name = "CopiedPictureBox33";
             this.CopiedPictureBox33.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox33.TabIndex = 19;
@@ -661,7 +643,7 @@ namespace DeckShuffler
             // CopiedPictureBox34
             // 
             this.CopiedPictureBox34.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox34.Location = new System.Drawing.Point(210, 44);
+            this.CopiedPictureBox34.Location = new System.Drawing.Point(187, 44);
             this.CopiedPictureBox34.Name = "CopiedPictureBox34";
             this.CopiedPictureBox34.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox34.TabIndex = 18;
@@ -670,7 +652,7 @@ namespace DeckShuffler
             // CopiedPictureBox35
             // 
             this.CopiedPictureBox35.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox35.Location = new System.Drawing.Point(187, 44);
+            this.CopiedPictureBox35.Location = new System.Drawing.Point(164, 44);
             this.CopiedPictureBox35.Name = "CopiedPictureBox35";
             this.CopiedPictureBox35.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox35.TabIndex = 17;
@@ -679,7 +661,7 @@ namespace DeckShuffler
             // CopiedPictureBox36
             // 
             this.CopiedPictureBox36.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox36.Location = new System.Drawing.Point(164, 44);
+            this.CopiedPictureBox36.Location = new System.Drawing.Point(141, 44);
             this.CopiedPictureBox36.Name = "CopiedPictureBox36";
             this.CopiedPictureBox36.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox36.TabIndex = 16;
@@ -688,7 +670,7 @@ namespace DeckShuffler
             // CopiedPictureBox37
             // 
             this.CopiedPictureBox37.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox37.Location = new System.Drawing.Point(141, 44);
+            this.CopiedPictureBox37.Location = new System.Drawing.Point(118, 44);
             this.CopiedPictureBox37.Name = "CopiedPictureBox37";
             this.CopiedPictureBox37.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox37.TabIndex = 15;
@@ -697,7 +679,7 @@ namespace DeckShuffler
             // CopiedPictureBox38
             // 
             this.CopiedPictureBox38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox38.Location = new System.Drawing.Point(118, 44);
+            this.CopiedPictureBox38.Location = new System.Drawing.Point(95, 44);
             this.CopiedPictureBox38.Name = "CopiedPictureBox38";
             this.CopiedPictureBox38.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox38.TabIndex = 14;
@@ -706,7 +688,7 @@ namespace DeckShuffler
             // CopiedPictureBox39
             // 
             this.CopiedPictureBox39.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox39.Location = new System.Drawing.Point(95, 44);
+            this.CopiedPictureBox39.Location = new System.Drawing.Point(72, 44);
             this.CopiedPictureBox39.Name = "CopiedPictureBox39";
             this.CopiedPictureBox39.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox39.TabIndex = 13;
@@ -715,7 +697,7 @@ namespace DeckShuffler
             // CopiedPictureBox40
             // 
             this.CopiedPictureBox40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox40.Location = new System.Drawing.Point(72, 44);
+            this.CopiedPictureBox40.Location = new System.Drawing.Point(49, 44);
             this.CopiedPictureBox40.Name = "CopiedPictureBox40";
             this.CopiedPictureBox40.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox40.TabIndex = 12;
@@ -724,7 +706,7 @@ namespace DeckShuffler
             // CopiedPictureBox41
             // 
             this.CopiedPictureBox41.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopiedPictureBox41.Location = new System.Drawing.Point(49, 44);
+            this.CopiedPictureBox41.Location = new System.Drawing.Point(26, 44);
             this.CopiedPictureBox41.Name = "CopiedPictureBox41";
             this.CopiedPictureBox41.Size = new System.Drawing.Size(17, 35);
             this.CopiedPictureBox41.TabIndex = 11;
@@ -1549,6 +1531,24 @@ namespace DeckShuffler
             this.LabelOutput.Size = new System.Drawing.Size(173, 193);
             this.LabelOutput.TabIndex = 9;
             // 
+            // CopiedPictureBox1
+            // 
+            this.CopiedPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CopiedPictureBox1.Location = new System.Drawing.Point(26, 208);
+            this.CopiedPictureBox1.Name = "CopiedPictureBox1";
+            this.CopiedPictureBox1.Size = new System.Drawing.Size(17, 39);
+            this.CopiedPictureBox1.TabIndex = 52;
+            this.CopiedPictureBox1.TabStop = false;
+            // 
+            // CopiedPictureBox2
+            // 
+            this.CopiedPictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CopiedPictureBox2.Location = new System.Drawing.Point(3, 208);
+            this.CopiedPictureBox2.Name = "CopiedPictureBox2";
+            this.CopiedPictureBox2.Size = new System.Drawing.Size(17, 39);
+            this.CopiedPictureBox2.TabIndex = 53;
+            this.CopiedPictureBox2.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1562,8 +1562,6 @@ namespace DeckShuffler
             this.TableLayoutPanel1.ResumeLayout(false);
             this.TableLayoutPanel1.PerformLayout();
             this.TableLayoutPanelCopiedCards.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox5)).EndInit();
@@ -1670,6 +1668,8 @@ namespace DeckShuffler
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox54)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CopiedPictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1740,8 +1740,6 @@ namespace DeckShuffler
         private System.Windows.Forms.Button ButtonCompareDecks;
         private System.Windows.Forms.Button ButtonFlipAllCards;
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanelCopiedCards;
-        private System.Windows.Forms.PictureBox CopiedPictureBox1;
-        private System.Windows.Forms.PictureBox CopiedPictureBox2;
         private System.Windows.Forms.PictureBox CopiedPictureBox3;
         private System.Windows.Forms.PictureBox CopiedPictureBox4;
         private System.Windows.Forms.PictureBox CopiedPictureBox5;
@@ -1797,6 +1795,8 @@ namespace DeckShuffler
         private System.Windows.Forms.Button ButtonDrawTenCards;
         private System.Windows.Forms.Button ButtonShuffle;
         private System.Windows.Forms.Button ButtonAltShuffle;
+        private System.Windows.Forms.PictureBox CopiedPictureBox2;
+        private System.Windows.Forms.PictureBox CopiedPictureBox1;
     }
 }
 
