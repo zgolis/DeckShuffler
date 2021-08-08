@@ -3,15 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using static DeckShuffler.Information;
 
     public class Deck : IEquatable<Deck>
     {
         private static Random random = new Random();
-
-        public List<Card> Cards { get; private set; } = new List<Card>();
 
         public Deck(bool generateDeck = true)
         {
@@ -37,6 +33,8 @@
 
             this.Cards = newList;
         }
+
+        public List<Card> Cards { get; private set; } = new List<Card>();
 
         public static bool operator ==(Deck deck1, Deck deck2) => EqualityComparer<Deck>.Default.Equals(deck1, deck2);
 

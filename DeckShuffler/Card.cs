@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Drawing;
     using System.IO;
-    using System.Resources;
     using static DeckShuffler.Information;
 
     public class Card : IEquatable<Card>
