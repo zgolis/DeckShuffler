@@ -177,6 +177,11 @@
             this.LabelOutput.Text = string.Empty;
             int counter = 0;
 
+            if (this.DiscardPile.Cards.Count() == 0)
+            {
+                this.AllCardBackBackgrounds();
+            }
+
             if (this.cardsFlipped)
             {
                 this.cardsFlipped = false;

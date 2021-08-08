@@ -88,6 +88,8 @@ namespace DeckShuffler
             this.ButtonDrawFiveCards = new System.Windows.Forms.Button();
             this.ButtonDrawTenCards = new System.Windows.Forms.Button();
             this.ButtonFlipAllCards = new System.Windows.Forms.Button();
+            this.ButtonShuffle = new System.Windows.Forms.Button();
+            this.ButtonAltShuffle = new System.Windows.Forms.Button();
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.PictureBox52 = new System.Windows.Forms.PictureBox();
             this.PictureBox51 = new System.Windows.Forms.PictureBox();
@@ -142,8 +144,6 @@ namespace DeckShuffler
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.ButtonAltShuffle = new System.Windows.Forms.Button();
-            this.ButtonShuffle = new System.Windows.Forms.Button();
             this.ButtonClearDeck = new System.Windows.Forms.Button();
             this.ButtonCopyDeck = new System.Windows.Forms.Button();
             this.ButtonLoadDeck = new System.Windows.Forms.Button();
@@ -835,6 +835,8 @@ namespace DeckShuffler
             this.FlowLayoutPanel1.Controls.Add(this.ButtonDrawFiveCards);
             this.FlowLayoutPanel1.Controls.Add(this.ButtonDrawTenCards);
             this.FlowLayoutPanel1.Controls.Add(this.ButtonFlipAllCards);
+            this.FlowLayoutPanel1.Controls.Add(this.ButtonShuffle);
+            this.FlowLayoutPanel1.Controls.Add(this.ButtonAltShuffle);
             this.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanel1.Location = new System.Drawing.Point(239, 771);
             this.FlowLayoutPanel1.Name = "FlowLayoutPanel1";
@@ -844,9 +846,11 @@ namespace DeckShuffler
             // 
             // ButtonDrawCard
             // 
+            this.ButtonDrawCard.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ButtonDrawCard.Location = new System.Drawing.Point(3, 3);
             this.ButtonDrawCard.Name = "ButtonDrawCard";
-            this.ButtonDrawCard.Size = new System.Drawing.Size(115, 40);
+            this.ButtonDrawCard.Padding = new System.Windows.Forms.Padding(10);
+            this.ButtonDrawCard.Size = new System.Drawing.Size(175, 50);
             this.ButtonDrawCard.TabIndex = 2;
             this.ButtonDrawCard.Text = "Draw Card";
             this.ButtonDrawCard.UseVisualStyleBackColor = true;
@@ -854,9 +858,11 @@ namespace DeckShuffler
             // 
             // ButtonDrawFiveCards
             // 
-            this.ButtonDrawFiveCards.Location = new System.Drawing.Point(124, 3);
+            this.ButtonDrawFiveCards.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonDrawFiveCards.Location = new System.Drawing.Point(184, 3);
             this.ButtonDrawFiveCards.Name = "ButtonDrawFiveCards";
-            this.ButtonDrawFiveCards.Size = new System.Drawing.Size(115, 40);
+            this.ButtonDrawFiveCards.Padding = new System.Windows.Forms.Padding(10);
+            this.ButtonDrawFiveCards.Size = new System.Drawing.Size(175, 50);
             this.ButtonDrawFiveCards.TabIndex = 4;
             this.ButtonDrawFiveCards.Text = "Draw 5 Cards";
             this.ButtonDrawFiveCards.UseVisualStyleBackColor = true;
@@ -864,9 +870,11 @@ namespace DeckShuffler
             // 
             // ButtonDrawTenCards
             // 
-            this.ButtonDrawTenCards.Location = new System.Drawing.Point(245, 3);
+            this.ButtonDrawTenCards.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonDrawTenCards.Location = new System.Drawing.Point(365, 3);
             this.ButtonDrawTenCards.Name = "ButtonDrawTenCards";
-            this.ButtonDrawTenCards.Size = new System.Drawing.Size(115, 40);
+            this.ButtonDrawTenCards.Padding = new System.Windows.Forms.Padding(10);
+            this.ButtonDrawTenCards.Size = new System.Drawing.Size(175, 50);
             this.ButtonDrawTenCards.TabIndex = 6;
             this.ButtonDrawTenCards.Text = "Draw 10 Cards";
             this.ButtonDrawTenCards.UseVisualStyleBackColor = true;
@@ -874,13 +882,41 @@ namespace DeckShuffler
             // 
             // ButtonFlipAllCards
             // 
-            this.ButtonFlipAllCards.Location = new System.Drawing.Point(366, 3);
+            this.ButtonFlipAllCards.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonFlipAllCards.Location = new System.Drawing.Point(546, 3);
             this.ButtonFlipAllCards.Name = "ButtonFlipAllCards";
-            this.ButtonFlipAllCards.Size = new System.Drawing.Size(115, 40);
+            this.ButtonFlipAllCards.Padding = new System.Windows.Forms.Padding(10);
+            this.ButtonFlipAllCards.Size = new System.Drawing.Size(175, 50);
             this.ButtonFlipAllCards.TabIndex = 5;
             this.ButtonFlipAllCards.Text = "Flip All Cards";
             this.ButtonFlipAllCards.UseVisualStyleBackColor = true;
             this.ButtonFlipAllCards.Click += new System.EventHandler(this.ButtonFlipAllCards_Click);
+            // 
+            // ButtonShuffle
+            // 
+            this.ButtonShuffle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ButtonShuffle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonShuffle.Location = new System.Drawing.Point(3, 59);
+            this.ButtonShuffle.Name = "ButtonShuffle";
+            this.ButtonShuffle.Padding = new System.Windows.Forms.Padding(10);
+            this.ButtonShuffle.Size = new System.Drawing.Size(175, 50);
+            this.ButtonShuffle.TabIndex = 7;
+            this.ButtonShuffle.Text = "Shuffle";
+            this.ButtonShuffle.UseVisualStyleBackColor = true;
+            this.ButtonShuffle.Click += new System.EventHandler(this.ButtonShuffle_Click);
+            // 
+            // ButtonAltShuffle
+            // 
+            this.ButtonAltShuffle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ButtonAltShuffle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonAltShuffle.Location = new System.Drawing.Point(184, 59);
+            this.ButtonAltShuffle.Name = "ButtonAltShuffle";
+            this.ButtonAltShuffle.Padding = new System.Windows.Forms.Padding(10);
+            this.ButtonAltShuffle.Size = new System.Drawing.Size(175, 50);
+            this.ButtonAltShuffle.TabIndex = 8;
+            this.ButtonAltShuffle.Text = "Alt Shuffle";
+            this.ButtonAltShuffle.UseVisualStyleBackColor = true;
+            this.ButtonAltShuffle.Click += new System.EventHandler(this.ButtonAltShuffle_Click);
             // 
             // TableLayoutPanel2
             // 
@@ -1430,8 +1466,6 @@ namespace DeckShuffler
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.ButtonAltShuffle);
-            this.flowLayoutPanel2.Controls.Add(this.ButtonShuffle);
             this.flowLayoutPanel2.Controls.Add(this.ButtonClearDeck);
             this.flowLayoutPanel2.Controls.Add(this.ButtonCopyDeck);
             this.flowLayoutPanel2.Controls.Add(this.ButtonLoadDeck);
@@ -1443,31 +1477,13 @@ namespace DeckShuffler
             this.flowLayoutPanel2.Size = new System.Drawing.Size(173, 762);
             this.flowLayoutPanel2.TabIndex = 4;
             // 
-            // ButtonAltShuffle
-            // 
-            this.ButtonAltShuffle.Location = new System.Drawing.Point(3, 3);
-            this.ButtonAltShuffle.Name = "ButtonAltShuffle";
-            this.ButtonAltShuffle.Size = new System.Drawing.Size(115, 40);
-            this.ButtonAltShuffle.TabIndex = 1;
-            this.ButtonAltShuffle.Text = "Alt Shuffle";
-            this.ButtonAltShuffle.UseVisualStyleBackColor = true;
-            this.ButtonAltShuffle.Click += new System.EventHandler(this.ButtonAltShuffle_Click);
-            // 
-            // ButtonShuffle
-            // 
-            this.ButtonShuffle.Location = new System.Drawing.Point(3, 49);
-            this.ButtonShuffle.Name = "ButtonShuffle";
-            this.ButtonShuffle.Size = new System.Drawing.Size(115, 40);
-            this.ButtonShuffle.TabIndex = 6;
-            this.ButtonShuffle.Text = "Shuffle";
-            this.ButtonShuffle.UseVisualStyleBackColor = true;
-            this.ButtonShuffle.Click += new System.EventHandler(this.ButtonShuffle_Click);
-            // 
             // ButtonClearDeck
             // 
-            this.ButtonClearDeck.Location = new System.Drawing.Point(3, 95);
+            this.ButtonClearDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonClearDeck.Location = new System.Drawing.Point(3, 3);
             this.ButtonClearDeck.Name = "ButtonClearDeck";
-            this.ButtonClearDeck.Size = new System.Drawing.Size(115, 40);
+            this.ButtonClearDeck.Padding = new System.Windows.Forms.Padding(10);
+            this.ButtonClearDeck.Size = new System.Drawing.Size(160, 50);
             this.ButtonClearDeck.TabIndex = 5;
             this.ButtonClearDeck.Text = "Clear Deck";
             this.ButtonClearDeck.UseVisualStyleBackColor = true;
@@ -1475,9 +1491,11 @@ namespace DeckShuffler
             // 
             // ButtonCopyDeck
             // 
-            this.ButtonCopyDeck.Location = new System.Drawing.Point(3, 141);
+            this.ButtonCopyDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonCopyDeck.Location = new System.Drawing.Point(3, 59);
             this.ButtonCopyDeck.Name = "ButtonCopyDeck";
-            this.ButtonCopyDeck.Size = new System.Drawing.Size(115, 40);
+            this.ButtonCopyDeck.Padding = new System.Windows.Forms.Padding(10);
+            this.ButtonCopyDeck.Size = new System.Drawing.Size(160, 50);
             this.ButtonCopyDeck.TabIndex = 4;
             this.ButtonCopyDeck.Text = "Copy Deck";
             this.ButtonCopyDeck.UseVisualStyleBackColor = true;
@@ -1485,9 +1503,11 @@ namespace DeckShuffler
             // 
             // ButtonLoadDeck
             // 
-            this.ButtonLoadDeck.Location = new System.Drawing.Point(3, 187);
+            this.ButtonLoadDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonLoadDeck.Location = new System.Drawing.Point(3, 115);
             this.ButtonLoadDeck.Name = "ButtonLoadDeck";
-            this.ButtonLoadDeck.Size = new System.Drawing.Size(115, 40);
+            this.ButtonLoadDeck.Padding = new System.Windows.Forms.Padding(10);
+            this.ButtonLoadDeck.Size = new System.Drawing.Size(160, 50);
             this.ButtonLoadDeck.TabIndex = 7;
             this.ButtonLoadDeck.Text = "Load Deck";
             this.ButtonLoadDeck.UseVisualStyleBackColor = true;
@@ -1495,9 +1515,11 @@ namespace DeckShuffler
             // 
             // ButtonCompareDecks
             // 
-            this.ButtonCompareDecks.Location = new System.Drawing.Point(3, 233);
+            this.ButtonCompareDecks.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonCompareDecks.Location = new System.Drawing.Point(3, 171);
             this.ButtonCompareDecks.Name = "ButtonCompareDecks";
-            this.ButtonCompareDecks.Size = new System.Drawing.Size(115, 40);
+            this.ButtonCompareDecks.Padding = new System.Windows.Forms.Padding(10);
+            this.ButtonCompareDecks.Size = new System.Drawing.Size(160, 85);
             this.ButtonCompareDecks.TabIndex = 8;
             this.ButtonCompareDecks.Text = "Compare Decks";
             this.ButtonCompareDecks.UseVisualStyleBackColor = true;
@@ -1710,10 +1732,8 @@ namespace DeckShuffler
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button ButtonDrawCard;
         private System.Windows.Forms.Button ButtonDrawFiveCards;
-        private System.Windows.Forms.Button ButtonAltShuffle;
         private System.Windows.Forms.Button ButtonCopyDeck;
         private System.Windows.Forms.Button ButtonClearDeck;
-        private System.Windows.Forms.Button ButtonShuffle;
         private System.Windows.Forms.Button ButtonLoadDeck;
         private System.Windows.Forms.Button ButtonCompareDecks;
         private System.Windows.Forms.Button ButtonFlipAllCards;
@@ -1773,6 +1793,8 @@ namespace DeckShuffler
         private System.Windows.Forms.PictureBox PictureBox54;
         private System.Windows.Forms.Label LabelOutput;
         private System.Windows.Forms.Button ButtonDrawTenCards;
+        private System.Windows.Forms.Button ButtonShuffle;
+        private System.Windows.Forms.Button ButtonAltShuffle;
     }
 }
 
