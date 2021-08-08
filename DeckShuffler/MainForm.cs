@@ -59,12 +59,14 @@
         private Image Background => Image.FromFile(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + $"\\Resources\\back.png");
 
         // * Button Clicks * //
+        private void ButtonShuffle_Click(object sender, EventArgs e)
+        {
+            this.Shuffle(() => this.DeckRoot.UnbiasedShuffle());
+        }
+
         private void ButtonAltShuffle_Click(object sender, EventArgs e)
         {
-            this.AllCardBackBackgrounds();
-            this.DeckRoot.LessEfficientShuffle();
-            this.DrawPile = this.DeckRoot.Copy();
-            this.DiscardPile = new Deck(generateDeck: false);
+            this.Shuffle(() => this.DeckRoot.LessEfficientShuffle());
         }
 
         private void ButtonClearDeck_Click(object sender, EventArgs e)
@@ -75,14 +77,6 @@
         private void ButtonCopyDeck_Click(object sender, EventArgs e)
         {
             this.CopyDeck();
-        }
-
-        private void ButtonShuffle_Click(object sender, EventArgs e)
-        {
-            this.AllCardBackBackgrounds();
-            this.DeckRoot.UnbiasedShuffle();
-            this.DrawPile = this.DeckRoot.Copy();
-            this.DiscardPile = new Deck(generateDeck: false);
         }
 
         private void ButtonDrawCard_Click(object sender, EventArgs e)
@@ -102,15 +96,8 @@
 
         private void ButtonFlipAllCards_Click(object sender, EventArgs e)
         {
-            int oldPileLength = this.DiscardPile.Cards.Count();
-
-            for (int count = oldPileLength; count < 52; count++)
-            {
-                Card card = this.DeckRoot.Cards[count];
-                this.SetCardImage(count, card.Image);
-            }
-
-            this.cardsFlipped = true;
+            this.FlipCards((card) => this.cardsFlipped ? this.Background : card.Image);
+            this.cardsFlipped ^= true;
         }
 
         private void ButtonLoadDeck_Click(object sender, EventArgs e)
@@ -137,13 +124,43 @@
         // * End Button Clicks * //
 
         /// <summary>
+        /// Shuffles the deck.
+        /// </summary>
+        /// <param name="action">The type of shuffle to perform.</param>
+        private void Shuffle(Action action)
+        {
+            this.AllCardBackBackgrounds();
+            action();
+            this.DrawPile = this.DeckRoot.Copy();
+            this.DiscardPile = new Deck(generateDeck: false);
+
+            if (this.cardsFlipped)
+            {
+                this.FlipCards((card) => card.Image);
+            }
+        }
+
+        /// <summary>
+        /// Flips all cards.
+        /// </summary>
+        /// <param name="cardImage">Image to flip the cards to.</param>
+        private void FlipCards(Func<Card, Image> cardImage)
+        {
+            for (int count = this.DiscardPile.Cards.Count(); count < this.DeckRoot.Cards.Count; count++)
+            {
+                Card card = this.DeckRoot.Cards[count];
+                this.SetCardImage(count, cardImage(card));
+            }
+        }
+
+        /// <summary>
         /// Copies the deck.
         /// </summary>
         private void CopyDeck()
         {
             this.DeckCopy = this.DeckRoot.Copy();
 
-            for (int count = 0; count < 52; count++)
+            for (int count = 0; count < this.DeckRoot.Cards.Count; count++)
             {
                 Card card = this.DeckCopy.Cards[count];
                 this.SetCopiedCardImage(count, card.Image);
@@ -154,16 +171,10 @@
         /// Resets the deck.
         /// </summary>
         /// <param name="action">Action to perform such as shuffles.</param>
-        private void ResetDeck(Action action = null)
+        private void ResetDeck()
         {
             this.DeckRoot = new Deck();
             this.ClearAllBackgrounds();
-
-            if (action != null)
-            {
-                action();
-            }
-
             this.DrawPile = this.DeckRoot.Copy();
             this.DiscardPile = new Deck(generateDeck: false);
         }
