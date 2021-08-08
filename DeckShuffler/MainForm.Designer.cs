@@ -1540,8 +1540,10 @@ namespace DeckShuffler
             // LabelOutput
             // 
             this.LabelOutput.AutoSize = true;
+            this.LabelOutput.BackColor = System.Drawing.Color.DarkGreen;
             this.LabelOutput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabelOutput.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LabelOutput.ForeColor = System.Drawing.SystemColors.Control;
             this.LabelOutput.Location = new System.Drawing.Point(1008, 768);
             this.LabelOutput.Name = "LabelOutput";
             this.LabelOutput.Size = new System.Drawing.Size(173, 193);

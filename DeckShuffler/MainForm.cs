@@ -1,10 +1,12 @@
 ﻿namespace DeckShuffler
 {
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Timers;
     using System.Windows.Forms;
 
     public partial class MainForm : Form
@@ -102,10 +104,28 @@
 
         private void ButtonLoadDeck_Click(object sender, EventArgs e)
         {
-            this.AllCardBackBackgrounds();
-            this.DeckRoot = this.DeckCopy.Copy();
-            this.DrawPile = this.DeckCopy.Copy();
-            this.DiscardPile = new Deck(generateDeck: false);
+            this.WaitFor(
+                   buttons: new Dictionary<Button, Tuple<string, string>>()
+                   {
+                        { this.ButtonLoadDeck, new Tuple<string, string>("Loading...", "Load Deck") },
+                   },
+                   action: () =>
+                   {
+                       if (this.DeckCopy == null)
+                       {
+                           this.CopyDeck();
+                       }
+                       else
+                       {
+                           if (this.DeckRoot != this.DeckCopy)
+                           {
+                               this.AllCardBackBackgrounds();
+                               this.DeckRoot = this.DeckCopy.Copy();
+                               this.DrawPile = this.DeckCopy.Copy();
+                               this.DiscardPile = new Deck(generateDeck: false);
+                           }
+                       }
+                   });
         }
 
         private void ButtonCompareDecks_Click(object sender, EventArgs e)
@@ -129,17 +149,24 @@
         /// <param name="action">The type of shuffle to perform.</param>
         private void Shuffle(Action action)
         {
-            this.AllCardBackBackgrounds();
-            action();
-            this.DrawPile = this.DeckRoot.Copy();
-            this.DiscardPile = new Deck(generateDeck: false);
+            this.WaitFor(
+                buttons: new Dictionary<Button, Tuple<string, string>>()
+                {
+                    { this.ButtonShuffle, new Tuple<string, string>("Shuffling...", "Shuffle") },
+                    { this.ButtonAltShuffle, new Tuple<string, string>("Alt Shuffling...", "Alt Shuffle") },
+                },
+                action: () =>
+                {
+                    this.AllCardBackBackgrounds();
+                    action();
+                    this.DrawPile = this.DeckRoot.Copy();
+                    this.DiscardPile = new Deck(generateDeck: false);
 
-            if (this.cardsFlipped)
-            {
-                this.FlipCards((card) => card.Image);
-            }
-
-            GC.Collect();
+                    if (this.cardsFlipped)
+                    {
+                        this.FlipCards((card) => card.Image);
+                    }
+                });
         }
 
         /// <summary>
@@ -148,11 +175,19 @@
         /// <param name="cardImage">Image to flip the cards to.</param>
         private void FlipCards(Func<Card, Image> cardImage)
         {
-            for (int count = this.DiscardPile.Cards.Count(); count < this.DeckRoot.Cards.Count; count++)
-            {
-                Card card = this.DeckRoot.Cards[count];
-                this.SetCardImage(count, cardImage(card));
-            }
+            this.WaitFor(
+                buttons: new Dictionary<Button, Tuple<string, string>>()
+                {
+                    { this.ButtonFlipAllCards, new Tuple<string, string>("Flipping...", "Flip All Cards") },
+                },
+                action: () =>
+                {
+                    for (int count = this.DiscardPile.Cards.Count(); count < this.DeckRoot.Cards.Count; count++)
+                    {
+                        Card card = this.DeckRoot.Cards[count];
+                        this.SetCardImage(count, cardImage(card));
+                    }
+                });
         }
 
         /// <summary>
@@ -160,13 +195,20 @@
         /// </summary>
         private void CopyDeck()
         {
-            this.DeckCopy = this.DeckRoot.Copy();
-
-            for (int count = 0; count < this.DeckRoot.Cards.Count; count++)
-            {
-                Card card = this.DeckCopy.Cards[count];
-                this.SetCopiedCardImage(count, card.Image);
-            }
+            this.WaitFor(
+                buttons: new Dictionary<Button, Tuple<string, string>>()
+                {
+                    { this.ButtonCopyDeck, new Tuple<string, string>("Copying...", "Copy Deck") },
+                },
+                action: () =>
+                {
+                    this.DeckCopy = this.DeckRoot.Copy();
+                    for (int count = 0; count < this.DeckRoot.Cards.Count; count++)
+                    {
+                        Card card = this.DeckCopy.Cards[count];
+                        this.SetCopiedCardImage(count, card.Image);
+                    }
+                });
         }
 
         /// <summary>
@@ -175,10 +217,18 @@
         /// <param name="action">Action to perform such as shuffles.</param>
         private void ResetDeck()
         {
-            this.DeckRoot = new Deck();
-            this.ClearAllBackgrounds();
-            this.DrawPile = this.DeckRoot.Copy();
-            this.DiscardPile = new Deck(generateDeck: false);
+            this.WaitFor(
+                buttons: new Dictionary<Button, Tuple<string, string>>()
+                {
+                    { this.ButtonClearDeck, new Tuple<string, string>("Clearing...", "Clear Deck") },
+                },
+                action: () =>
+                {
+                    this.DeckRoot = new Deck();
+                    this.ClearAllBackgrounds();
+                    this.DrawPile = this.DeckRoot.Copy();
+                    this.DiscardPile = new Deck(generateDeck: false);
+                });
         }
 
         /// <summary>
@@ -188,41 +238,51 @@
         private void DrawCard(int cardsToDraw = 1)
         {
             this.LabelOutput.Text = string.Empty;
-            int counter = 0;
-
-            if (this.DiscardPile.Cards.Count() == 0)
-            {
-                this.AllCardBackBackgrounds();
-            }
-
-            if (this.cardsFlipped)
-            {
-                this.cardsFlipped = false;
-                this.AllCardBackBackgrounds();
-
-                for (int count = 0; count < this.DiscardPile.Cards.Count; count++)
+            this.WaitFor(
+                buttons: new Dictionary<Button, Tuple<string, string>>()
                 {
-                    this.SetCardImage(count, this.DiscardPile.Cards[count].Image);
-                }
-            }
-
-            while (cardsToDraw > 0)
-            {
-                if (this.DrawPile.Cards.Count > 0)
+                    { this.ButtonDrawCard, new Tuple<string, string>("Drawing...", "Draw Card") },
+                    { this.ButtonDrawFiveCards, new Tuple<string, string>("Drawing...", "Draw 5 Cards") },
+                    { this.ButtonDrawTenCards, new Tuple<string, string>("Drawing...", "Draw 10 Cards") },
+                },
+                action: () =>
                 {
-                    Card card = this.DrawPile.Cards[0];
-                    this.DiscardPile.Cards.Add(card);
-                    this.SetCardImage(this.DiscardPile.Cards.Count() - 1, card.Image);
-                    this.DrawPile.Cards.Remove(card);
-                }
-                else
-                {
-                    counter++;
-                    this.LabelOutput.Text = $"No more cards to draw! x{counter}";
-                }
+                    int counter = 0;
 
-                cardsToDraw--;
-            }
+                    if (this.DiscardPile.Cards.Count() == 0)
+                    {
+                        this.AllCardBackBackgrounds();
+                    }
+
+                    if (this.cardsFlipped)
+                    {
+                        this.cardsFlipped = false;
+                        this.AllCardBackBackgrounds();
+
+                        for (int count = 0; count < this.DiscardPile.Cards.Count; count++)
+                        {
+                            this.SetCardImage(count, this.DiscardPile.Cards[count].Image);
+                        }
+                    }
+
+                    while (cardsToDraw > 0)
+                    {
+                        if (this.DrawPile.Cards.Count > 0)
+                        {
+                            Card card = this.DrawPile.Cards[0];
+                            this.DiscardPile.Cards.Add(card);
+                            this.SetCardImage(this.DiscardPile.Cards.Count() - 1, card.Image);
+                            this.DrawPile.Cards.Remove(card);
+                        }
+                        else
+                        {
+                            counter++;
+                            this.LabelOutput.Text = $"No more cards to draw! x{counter}";
+                        }
+
+                        cardsToDraw--;
+                    }
+                });
         }
 
         /// <summary>
@@ -267,6 +327,41 @@
         {
             PictureBox dynamicPictureBox = this.DynamicPictureBox(51 - count, "Copied");
             dynamicPictureBox.Image = image;
+        }
+
+        /// <summary>
+        /// Waits for a specific action to be completed before re-enabling a button(s).
+        /// </summary>
+        /// <param name="buttons">The button to disable and change its text.</param>
+        /// <param name="action">The action to perform inbetween the button changes.</param>
+        /// <param name="timeToWait">The time to wait for the before the WaitUntilEnd operation is called.</param>>
+        private void WaitFor(Dictionary<Button, Tuple<string, string>> buttons, Action action, double timeToWait = 250)
+        {
+            foreach (KeyValuePair<Button, Tuple<string, string>> temp in buttons)
+            {
+                temp.Key.Enabled = false;
+                temp.Key.Text = temp.Value.Item1;
+            }
+
+            System.Timers.Timer timer = new System.Timers.Timer(timeToWait);
+            timer.SynchronizingObject = this;
+            timer.AutoReset = false;
+            timer.Elapsed += new ElapsedEventHandler(WaitUntilEnd);
+
+            action();
+
+            timer.Enabled = true;
+
+            void WaitUntilEnd(object sender, ElapsedEventArgs e)
+            {
+                foreach (KeyValuePair<Button, Tuple<string, string>> temp in buttons)
+                {
+                    temp.Key.Enabled = true;
+                    temp.Key.Text = temp.Value.Item2;
+                }
+            }
+
+            GC.Collect();
         }
 
         /// <summary>
